@@ -8,10 +8,10 @@
 
 ## 当前状态 (最后更新: 2026-06-07 · by AI)
 
-- **阶段**:`PR 已发起` — 对应六步流程**第⑤⑥步之间(等待人工审核合并)**
-- **上一步完成**:全部代码实现 + 52 测试 + ruff + CI 全绿 → PR #1 已创建
-- **下一步 (TODO 第一条)**:人工 Review PR #1,通过后合并 main → 触发 CD 部署
-- **阻塞项**:等待人类审核 PR 并合并;CD 需配 Secrets(暂跳过,待有服务器)
+- **阶段**:`开发完成` — 六步流程第⑥步(合并完成, CD 待服务器)
+- **上一步完成**:PR #1 已人工合并 main → CD 自动触发 → CD 因无服务器 Secrets 预期失败
+- **下一步 (TODO 第一条)**:有服务器后配置 `SSH_PRIVATE_KEY`/`SSH_HOST`/`SSH_USER`,重新跑 CD
+- **阻塞项**:暂无服务器 (CD Secrets 未配)
 
 ---
 
@@ -62,10 +62,15 @@
 
 ## 已知坑 (GOTCHAS)
 
-- _暂无(项目刚初始化,尚未踩坑)_
+- conda `UnicodeEncodeError`(� 字符):Windows 控制台 GBK 编码与 pytest 输出中的 Unicode 符号冲突。解决:用 `set PYTHONIOENCODING=utf-8` + 直接用 `python.exe` 而非 `conda run`。
 
 ---
 
 ## 里程碑 (DONE)
 
-- _暂无_
+- [x] **2026-06-07** 项目文档完成 (`00/01/PROGRESS`) + 仓库创建 + 骨架搭建
+- [x] **2026-06-07** US-1~US-4 全部代码实现: 4 个 src 模块 + 2 个页面 + app.py
+- [x] **2026-06-07** 测试完成: 52 tests, 93% coverage, ruff 全绿
+- [x] **2026-06-07** 模型训练: RandomForest AUC=0.8907, 模型已保存
+- [x] **2026-06-07** CI 全绿 (lint-and-test 42s + docker-build 37s)
+- [x] **2026-06-07** PR #1 merged → CD 触发 (预期失败: 无服务器 Secrets)
