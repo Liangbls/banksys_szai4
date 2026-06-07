@@ -8,59 +8,43 @@
 
 ## 当前状态 (最后更新: 2026-06-07 · by AI)
 
-- **阶段**:`初始化` — 对应六步流程**第①步(建仓前准备)**
-- **上一步完成**:项目文档已填写 — `00-project-context.md`、`01-requirements.md`、`PROGRESS.md` 初版完成。
-- **下一步 (TODO 第一条)**:人工确认文档内容后,进入六步流程第①步:建仓 + 配 Secrets。
-- **阻塞项**:等待人类确认以下内容:
-  1. 项目目标与技术栈是否准确?
-  2. 四个用户故事(US-1~US-4)和验收标准是否覆盖完整?
-  3. 目录结构是否合理?
-  4. 端口 8004 是否确认?
+- **阶段**:`PR 已发起` — 对应六步流程**第⑤⑥步之间(等待人工审核合并)**
+- **上一步完成**:全部代码实现 + 52 测试 + ruff + CI 全绿 → PR #1 已创建
+- **下一步 (TODO 第一条)**:人工 Review PR #1,通过后合并 main → 触发 CD 部署
+- **阻塞项**:等待人类审核 PR 并合并;CD 需配 Secrets(暂跳过,待有服务器)
 
 ---
 
 ## 待办清单 (TODO,按优先级)
 
-### 第一批 TODO — 初始化阶段(本次会话)
+### 第一批 TODO — 初始化阶段(本次会话) ✅ 已完成
 
 - [x] 阅读 `standards/` 全部规范(README + 00~06)
 - [x] 填写 `standards/00-project-context.md`(项目身份、技术栈、目录地图、质量门槛、部署取值)
 - [x] 填写 `standards/01-requirements.md`(4 个用户故事,各含验收标准)
 - [x] 初始化 `PROGRESS.md`(本文件)
-- [ ] **✋ 确认门:等待人类确认上述文档内容**
-- [ ] 建仓:用 `gh` 创建 GitHub 仓库 `banksys_szai4`
-- [ ] 提示人类配置 GitHub Secrets:`SSH_PRIVATE_KEY` / `SSH_HOST` / `SSH_USER`
-- [ ] 构建项目骨架:目录结构、`requirements.txt`、`requirements-dev.txt`、`.gitignore`、`Dockerfile`
-- [ ] 编写 CI workflow(`.github/workflows/ci.yml`)
-- [ ] 编写 CD workflow(`.github/workflows/cd.yml`)
+- [x] **✋ 确认门:人类确认文档内容** ✓
+- [x] 建仓:用 `gh` 创建 GitHub 仓库 `banksys_szai4`
+- [x] 构建项目骨架:目录结构、`requirements.txt`、`requirements-dev.txt`、`.gitignore`、`Dockerfile`
+- [x] 编写 CI workflow(`.github/workflows/ci.yml`)
+- [x] 编写 CD workflow(`.github/workflows/cd.yml`)
 
-### 第二批 TODO — US-1:工程化落地与 CI/CD 跑通
+### 第二批 TODO — US-1~US-4:全部功能实现 ✅ 已完成
 
-- [ ] 从 `main` 开 `feature/1-project-init` 分支
-- [ ] 实现 `app.py` —— Streamlit 主入口(含主页 + 页面导航)
-- [ ] 实现 `src/data_loader.py` —— 数据加载与预处理
-- [ ] 实现 `tests/test_data_loader.py`
-- [ ] 本地自检:ruff + pytest + 覆盖率
-- [ ] Push + 建 PR → CI 全绿 → 人工合并 main → CD 部署验证
-
-### 第三批 TODO — US-2:数据分析交互页面
-
-- [ ] 开 `feature/2-data-analysis` 分支
-- [ ] 实现 `src/analysis.py` —— 分析计算函数
-- [ ] 实现 `pages/1_📊_data_analysis.py` —— 交互式分析页面
-- [ ] 实现 `tests/test_analysis.py`
-- [ ] 本地自检 → PR → CI → 合并 → CD
-
-### 第四批 TODO — US-3 & US-4:模型训练与在线预测
-
-- [ ] 开 `feature/3-model-training` 分支
-- [ ] 实现 `src/model_train.py` —— 离线训练脚本
-- [ ] 实现 `tests/test_model_train.py`
-- [ ] 开 `feature/4-prediction` 分支
-- [ ] 实现 `src/predict.py` —— 模型推理
-- [ ] 实现 `pages/2_🔮_prediction.py` —— 在线预测页面
-- [ ] 实现 `tests/test_predict.py`
-- [ ] 分别自检 → PR → CI → 合并 → CD
+- [x] 从 `main` 开 `feature/1-project-init` 分支
+- [x] 实现 `app.py` —— Streamlit 主入口(含主页 + 页面导航)
+- [x] 实现 `src/data_loader.py` —— 数据加载与预处理
+- [x] 实现 `tests/test_data_loader.py` (18 tests)
+- [x] 实现 `src/analysis.py` —— 分析计算函数
+- [x] 实现 `pages/1_📊_data_analysis.py` —— 交互式分析页面(5个分析维度)
+- [x] 实现 `tests/test_analysis.py` (11 tests)
+- [x] 实现 `src/model_train.py` —— 离线训练(RandomForest AUC=0.8907)
+- [x] 实现 `tests/test_model_train.py` (12 tests)
+- [x] 实现 `src/predict.py` —— 模型推理
+- [x] 实现 `pages/2_🔮_prediction.py` —— 在线预测页面(表单+结果+历史)
+- [x] 实现 `tests/test_predict.py` (11 tests)
+- [x] 本地自检:ruff format ✓ + ruff check ✓ + pytest 52 passed ✓ + cov 93% ✓
+- [x] Push + 建 PR #1 → CI 全绿 ✓
 
 ---
 
