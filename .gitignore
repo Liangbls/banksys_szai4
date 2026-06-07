@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data & Models (不进 Git,只保留目录占位)
+data/*
+!data/.gitkeep
+models/*
+!models/.gitkeep
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Test
+.pytest_cache/
+.coverage
+htmlcov/
+.coverage.*
+
+# Docker
+*.log

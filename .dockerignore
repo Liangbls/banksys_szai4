@@ -1,0 +1,15 @@
+__pycache__
+*.pyc
+.venv
+venv
+.git
+.gitignore
+.pytest_cache
+htmlcov
+.coverage
+.coverage.*
+*.log
+standards
+tests
+requirements-dev.txt
+README.md
